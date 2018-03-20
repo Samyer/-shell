@@ -25,14 +25,14 @@ void receive(int sock) {
 int main(int argc, char **argv) {
 	if(argc != 2) perro("args");
 
-	int sock = socket(AF_INET, SOCK_STREAM, 0);//Uder the TCP,This sentence must use SOCK_STREAM.²¢ÇÒÓëserver¶ËµÄsocketµÄtype²ÎÊı¶ÔÓ¦£¬·ñÔò½«²»ÄÜÁ¬½ÓÉÏserver¶Ë 
+	int sock = socket(AF_INET, SOCK_STREAM, 0);//Uder the TCP,This sentence must use SOCK_STREAM.å¹¶ä¸”ä¸serverç«¯çš„socketçš„typeå‚æ•°å¯¹åº”ï¼Œå¦åˆ™å°†ä¸èƒ½è¿æ¥ä¸Šserverç«¯ 
 	if(sock == -1) perro("socket");
 
 	//struct in_addr server_addr;
 	//if(!inet_aton(argv[1], &server_addr)) perro("inet_aton");
 	
 	struct sockaddr_in connection;
-	memset(&connection,0,sizeof(connection));
+	memset(&connection,0,sizeof(connection));//æ­¤å¤„ç›¸å½“äºç»™ç»“æ„ä½“connectionåˆå§‹åŒ–ä¸º0ï¼Œå¯ä»¥ä½¿ç”¨bzero(&connecton,sizeoff(struct sockaddr_in))
 	inet_pton(AF_INET,argv[1],&connection.sin_addr.s_addr);
 	connection.sin_family = AF_INET;
 	//memcpy(&connection.sin_addr, &server_addr, sizeof(server_addr));
